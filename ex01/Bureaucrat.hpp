@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 10:23:11 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 20:49:46 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Form;
 class Bureaucrat
 {
 private:
-	const std::string&	_name;
+	const std::string	_name;
 	unsigned int		_grade;
 protected:
 
