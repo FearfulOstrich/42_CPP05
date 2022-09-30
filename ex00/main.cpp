@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:33:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/28 17:41:48 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/09/30 14:35:02 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,62 +19,71 @@ int	main()
 	try
 	{
 		bob = Bureaucrat("bob", 1);
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 12);
+		bob = Bureaucrat("tom", 12);
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 151);
+		bob = Bureaucrat("sid", 151);
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 12);
+		bob = Bureaucrat("Lola", 12);
+		std::cout << bob << std::endl << std::endl;
 		bob.promote();
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 31);
+		bob = Bureaucrat("Sam", 31);
+		std::cout << bob << std::endl << std::endl;
 		bob.demote();
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 150);
+		bob = Bureaucrat("Tina", 150);
 		bob.demote();
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	try
 	{
-		bob = Bureaucrat("bob", 1);
+		bob = Bureaucrat("Pol", 1);
 		bob.promote();
+		std::cout << bob << std::endl << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << std::endl << std::endl;
 	}
 	return (0);
 }

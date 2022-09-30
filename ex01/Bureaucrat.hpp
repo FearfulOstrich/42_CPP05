@@ -6,15 +6,18 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/29 17:17:09 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 10:23:11 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _BUREAUCRAT_HPP_
-# define _BUREAUCRAT_HPP_
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <stdexcept>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -42,6 +45,7 @@ public:
 	// Member functions
 	void	promote(void);
 	void	demote(void);
+	void	signForm(Form& form) const;
 
 	// Exceptions
 	class GradeTooHighException: public std::exception

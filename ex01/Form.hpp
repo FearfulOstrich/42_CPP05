@@ -1,49 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/29 17:17:09 by antoine          ###   ########.fr       */
+/*   Created: 2022/09/29 16:29:25 by antoine           #+#    #+#             */
+/*   Updated: 2022/09/30 14:36:51 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _BUREAUCRAT_HPP_
-# define _BUREAUCRAT_HPP_
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <stdexcept>
+# include "Bureaucrat.hpp"
 
-class Bureaucrat
+class Bureaucrat;
+
+class Form
 {
 private:
 	const std::string&	_name;
-	unsigned int		_grade;
+	bool				_isSigned;
+	const unsigned int	_gradeSign;
+	const unsigned int	_gradeExecute;
+	
 protected:
 
 public:
 	// Constructors
-	Bureaucrat(const std::string name = "Unknown", unsigned int grade = 150);
-	Bureaucrat(const Bureaucrat& other);
+	Form(const std::string& name = "noNameForm",\
+			unsigned int sign_grade = 150, unsigned int exec_grade = 150);
+	Form(const Form& other);
 
 	// Destructors
-	virtual ~Bureaucrat();
+	virtual ~Form();
 
 	// Operator overload
-	Bureaucrat&	operator=(const Bureaucrat& other);
+	Form&	operator=(const Form& other);
 
 	// Accessors (getters should return by value or const-reference)
 	const std::string&	getName(void) const;
-	unsigned int		getGrade(void) const;
-	void				setGrade(unsigned int grade);
+	bool				getIsSigned(void) const;
+	unsigned int		getGradeSign(void) const;
+	unsigned int		getGradeExecute(void) const;
 	
 	// Member functions
-	void	promote(void);
-	void	demote(void);
+	void	beSigned(const Bureaucrat* assignee);
 
-	// Exceptions
+	//Exceptions
 	class GradeTooHighException: public std::exception
 	{
 	public:
@@ -56,6 +63,6 @@ public:
 	};
 };
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& obj);
+std::ostream&	operator<<(std::ostream& os, const Form& obj);
 
 #endif

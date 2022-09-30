@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:11 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 14:33:55 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 10:35:30 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 {
 	std::cout << "Bureaucrat assignment operator called." << std::endl;
-	std::cout << "copy from: " << other << std::endl;
 	if (this != &other)
 		this->_grade = other.getGrade();
-	std::cout << "copied: " << *this << std::endl;
 	return (*this);
 }
 
@@ -113,6 +111,27 @@ void	Bureaucrat::demote(void)
 	if (_grade == 150)
 		throw (GradeTooLowException());
 	this->_grade++;
+	return ;
+}
+
+void	Bureaucrat::signForm(Form& form) const
+{
+	if (form.getIsSigned() == true)
+	{
+		std::cout << this->_name << " couldn't sign " << form.getName();
+		std::cout << " because it's already signed." << std::endl;
+	}
+	try
+	{
+		form.beSigned(this);
+		std::cout << this->getName() << " signed " << form.getName() << ".";
+		std::cout << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << this->_name << " couldn't sign " << form.getName();
+		std::cout << " because " << e.what() << "." << std::endl;
+	}
 	return ;
 }
 
