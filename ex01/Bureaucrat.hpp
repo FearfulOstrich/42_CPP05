@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 20:49:46 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 21:09:35 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ protected:
 
 public:
 	// Constructors
-	Bureaucrat(const std::string name = "Unknown", unsigned int grade = 150);
+	Bureaucrat(const std::string& name = "Unknown", unsigned int grade = 150);
 	Bureaucrat(const Bureaucrat& other);
 
 	// Destructors

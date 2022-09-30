@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:11 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 10:35:30 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 21:30:57 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	Constructors.
 ==============================================================================*/
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
 	: _name(name)
 	, _grade(grade)
 {
@@ -98,7 +98,7 @@ void	Bureaucrat::setGrade(unsigned int grade)
 
 void	Bureaucrat::promote(void)
 {
-	std::cout << "in promote" << std::endl;
+	// std::cout << "in promote" << std::endl;
 	if (this->_grade == 1)
 		throw (GradeTooHighException());
 	this->_grade--;
@@ -107,7 +107,7 @@ void	Bureaucrat::promote(void)
 
 void	Bureaucrat::demote(void)
 {
-	std::cout << "in demote" << std::endl;
+	// std::cout << "in demote" << std::endl;
 	if (_grade == 150)
 		throw (GradeTooLowException());
 	this->_grade++;
@@ -120,6 +120,7 @@ void	Bureaucrat::signForm(Form& form) const
 	{
 		std::cout << this->_name << " couldn't sign " << form.getName();
 		std::cout << " because it's already signed." << std::endl;
+		return ;
 	}
 	try
 	{
@@ -141,12 +142,12 @@ void	Bureaucrat::signForm(Form& form) const
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	std::cout << "In GradeTooHighException what definition." << std::endl;
+	// std::cout << "In GradeTooHighException what definition." << std::endl;
 	return ("Grade too high.");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	std::cout << "In GradeTooLowException what definition." << std::endl;
+	// std::cout << "In GradeTooLowException what definition." << std::endl;
 	return ("Grade too low.");
 }

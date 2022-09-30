@@ -9,8 +9,8 @@ import sys
 
 def create_hpp(classname, folder):
 
-    header_file = """#ifndef _{0}_HPP_
-# define _{0}_HPP_
+    header_file = """#ifndef {0}_HPP
+# define {0}_HPP
 
 # include <iostream>
 

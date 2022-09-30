@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:29:28 by antoine           #+#    #+#             */
-/*   Updated: 2022/09/30 19:21:00 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 21:30:23 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,12 +118,12 @@ void	Form::beSigned(const Bureaucrat* assignee)
 
 const char*	Form::GradeTooHighException::what() const throw()
 {
-	std::cout << "In Form::GradeTooHighException what definition." << std::endl;
+	// std::cout << "In Form::GradeTooHighException what definition." << std::endl;
 	return ("Grade too high.");
 }
 
 const char*	Form::GradeTooLowException::what() const throw()
 {
-	std::cout << "In Form::GradeTooLowException what definition." << std::endl;
+	// std::cout << "In Form::GradeTooLowException what definition." << std::endl;
 	return ("Grade too low.");
 }

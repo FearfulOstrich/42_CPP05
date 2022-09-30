@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:33:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 19:26:43 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 21:29:13 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 int	main()
 {
 	{
-		Form	form;
-
 		try
 		{
+			Form	form;
 			std::cout << form << std::endl << std::endl;
 		}
 		catch (std::exception& e)
@@ -28,7 +27,7 @@ int	main()
 		}
 		try
 		{
-			form = Form("form1", 150, 100);
+			Form	form("form1", 150, 100);
 			std::cout << form << std::endl << std::endl;
 		}
 		catch (std::exception& e)
@@ -37,7 +36,7 @@ int	main()
 		}
 		try
 		{
-			form = Form("formNull", 151, 150);
+			Form	form("formNull", 151, 150);
 			std::cout << form << std::endl << std::endl;
 		}
 		catch (std::exception& e)
@@ -46,7 +45,7 @@ int	main()
 		}
 		try
 		{
-			form = Form("form400", 150, 0);
+			Form	form("form400", 150, 0);
 			std::cout << form << std::endl << std::endl;
 		}
 		catch (std::exception& e)
@@ -56,17 +55,17 @@ int	main()
 	}
 	std::cout << "=========================" << std::endl << std::endl;
 	{
-		Bureaucrat	bob;
-		Form		form;
-
-		std::cout << form << std::endl << std::endl;		
 		try
 		{
-			bob = Bureaucrat("bob", 1);
+			Bureaucrat	bob("bob", 1);
+			Form		form;
+			
 			std::cout << bob << std::endl;
 			std::cout << form << std::endl;
 			bob.signForm(form);
-			std::cout << form << std::endl << std::endl;
+			std::cout << form << std::endl;
+			bob.signForm(form);
+			std::cout << std::endl;
 		}
 		catch (std::exception& e)
 		{
@@ -74,12 +73,13 @@ int	main()
 		}
 		try
 		{
-			bob = Bureaucrat("bob", 12);
+			Bureaucrat	bob("bob", 12);
+			Form		form("topForm", 10, 10);
 			std::cout << bob << std::endl;
-			form = Form("topForm", 10, 10);
 			std::cout << form << std::endl;
 			bob.signForm(form);
 			std::cout << form << std::endl << std::endl;
+			std::cout << std::endl;
 		}
 		catch (std::exception& e)
 		{
@@ -87,8 +87,8 @@ int	main()
 		}
 		try
 		{
-			bob = Bureaucrat("bob", 11);
-			form = Form("topForm", 10, 10);
+			Bureaucrat	bob("bob", 11);
+			Form		form("topForm", 10, 10);
 			bob.promote();
 			bob.signForm(form);
 			std::cout << form << std::endl << std::endl;
