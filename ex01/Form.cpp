@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:29:28 by antoine           #+#    #+#             */
-/*   Updated: 2022/09/30 14:39:01 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 19:21:00 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ Form::~Form(void)
 Form&	Form::operator=(const Form& other)
 {
 	std::cout << "Form assignment operator called." << std::endl;
-	std::cout << "copy from: " << other << "." << std::endl; 
 	if (this != &other)
 		this->_isSigned = other.getIsSigned();
-	std::cout << "copied: " << *this << "." << std::endl; 
 	return (*this);
 }
 

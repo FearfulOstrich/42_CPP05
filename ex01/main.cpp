@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:33:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 10:36:57 by antoine          ###   ########.fr       */
+/*   Updated: 2022/09/30 19:26:43 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ int	main()
 	{
 		Bureaucrat	bob;
 		Form		form;
-		
+
+		std::cout << form << std::endl << std::endl;		
 		try
 		{
 			bob = Bureaucrat("bob", 1);
+			std::cout << bob << std::endl;
+			std::cout << form << std::endl;
 			bob.signForm(form);
 			std::cout << form << std::endl << std::endl;
 		}
@@ -72,7 +75,9 @@ int	main()
 		try
 		{
 			bob = Bureaucrat("bob", 12);
+			std::cout << bob << std::endl;
 			form = Form("topForm", 10, 10);
+			std::cout << form << std::endl;
 			bob.signForm(form);
 			std::cout << form << std::endl << std::endl;
 		}

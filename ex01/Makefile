@@ -20,6 +20,10 @@ SRCFILE	=	main.cpp Bureaucrat.cpp Form.cpp
 
 SRC		=	$(addprefix $(SRCDIR), $(SRCFILE))
 
+INCL_DIR=
+
+INCL	=	$(wildcard $(INCL_DIR)*.hpp)
+
 ## Objects
 
 OBJDIR	=	obj/
@@ -37,7 +41,7 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJ) Makefile
 				$(CC) $(OBJ) -o $(NAME)
 
-$(OBJDIR)%.o:	$(SRCDIR)%.cpp $(SRCDIR)%.hpp Makefile
+$(OBJDIR)%.o:	$(SRCDIR)%.cpp Makefile $(wildcard $(INCL_DIR)*.hpp)
 				mkdir -p $(OBJDIR)
 				$(CC) $(FLAGS) -c $< -o $@
 
