@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 12:24:21 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:33:32 by aalleon          ###   ########.fr       */
+/*   Created: 2022/09/30 22:10:36 by antoine           #+#    #+#             */
+/*   Updated: 2022/10/03 12:22:02 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /*==============================================================================
 	Constructors.
 ==============================================================================*/
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-	: AForm("ShrubberyCreation", 145, 137)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
+	: AForm("PresidentialPardon", 25, 5)
 	, _target(target)
 {
-	std::cout << "ShrubberyCreationForm Default Constructor called." << std::endl;
+	std::cout << "PresidentialPardonForm Default Constructor called." << std::endl;
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
 	: AForm(other)
 	, _target(other.getTarget())
 {
-	std::cout << "ShrubberyCreationForm Copy Constructor called." << std::endl;
+	std::cout << "PresidentialPardonForm Copy Constructor called." << std::endl;
 	*this = other;
 	return ;
 }
@@ -37,9 +37,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 	Destructor.
 ==============================================================================*/
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void)
+PresidentialPardonForm::~PresidentialPardonForm(void)
 {
-	std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
+	std::cout << "PresidentialPardonForm Destructor called." << std::endl;
 	return ;
 }
 
@@ -47,9 +47,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 	Operator overloads.
 ==============================================================================*/
 
-ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
 {
-	std::cout << "ShrubberyCreationForm assignment operator called." << std::endl;
+	std::cout << "PresidentialPardonForm assignment operator called." << std::endl;
 	if (this != &other)
 	{
 		// Copy all attributes
@@ -57,7 +57,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
+std::ostream&	operator<<(std::ostream& os, const PresidentialPardonForm& obj)
 {
 	os << static_cast<const AForm&>(obj);
 	return (os);
@@ -67,7 +67,7 @@ std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 	Getters.
 ==============================================================================*/
 
-const std::string&	ShrubberyCreationForm::getTarget(void) const
+const std::string&	PresidentialPardonForm::getTarget(void) const
 {
 	return (this->_target);
 }
@@ -80,18 +80,11 @@ const std::string&	ShrubberyCreationForm::getTarget(void) const
 	Member functions.
 ==============================================================================*/
 
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
-	std::ofstream	outfile((this->_target + "_shrubbery").c_str());
-	std::ifstream	tree_file("tree1.txt");
-
 	if (executor.getGrade() > this->_gradeExecute)
 		throw (AForm::GradeTooLowException());
-	if (outfile.is_open() && tree_file.is_open())
-		outfile << tree_file.rdbuf() << tree_file.rdbuf();
-	else
-		std::cerr << "Could not open file." << std::endl;
-	outfile.close();
-	tree_file.close();
+	std::cout << this->_target << " has been pardonned by Zaphod Beeblebrox.";
+	std::cout << std::endl;
 	return ;
 }

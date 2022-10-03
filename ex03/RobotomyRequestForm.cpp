@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 12:24:21 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:33:32 by aalleon          ###   ########.fr       */
+/*   Created: 2022/10/01 00:38:32 by antoine           #+#    #+#             */
+/*   Updated: 2022/10/03 12:40:31 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 /*==============================================================================
 	Constructors.
 ==============================================================================*/
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-	: AForm("ShrubberyCreation", 145, 137)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
+	: AForm("RobotomyRequest", 72, 45)
 	, _target(target)
 {
-	std::cout << "ShrubberyCreationForm Default Constructor called." << std::endl;
+	std::cout << "RobtomyRequestForm Default Constructor called." << std::endl;
+	std::srand(std::time(NULL));
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 	: AForm(other)
 	, _target(other.getTarget())
 {
-	std::cout << "ShrubberyCreationForm Copy Constructor called." << std::endl;
+	std::cout << "RobotomyRequestForm Copy Constructor called." << std::endl;
 	*this = other;
+	std::srand(std::time(NULL));
 	return ;
 }
 
@@ -37,9 +39,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 	Destructor.
 ==============================================================================*/
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void)
+RobotomyRequestForm::~RobotomyRequestForm(void)
 {
-	std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
+	std::cout << "RobotomyRequestForm Destructor called." << std::endl;
 	return ;
 }
 
@@ -47,9 +49,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 	Operator overloads.
 ==============================================================================*/
 
-ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-	std::cout << "ShrubberyCreationForm assignment operator called." << std::endl;
+	std::cout << "RobotomyRequestForm assignment operator called." << std::endl;
 	if (this != &other)
 	{
 		// Copy all attributes
@@ -57,7 +59,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
+std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& obj)
 {
 	os << static_cast<const AForm&>(obj);
 	return (os);
@@ -67,7 +69,7 @@ std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 	Getters.
 ==============================================================================*/
 
-const std::string&	ShrubberyCreationForm::getTarget(void) const
+const std::string&	RobotomyRequestForm::getTarget(void) const
 {
 	return (this->_target);
 }
@@ -80,18 +82,20 @@ const std::string&	ShrubberyCreationForm::getTarget(void) const
 	Member functions.
 ==============================================================================*/
 
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+bool	RobotomyRequestForm::generateRandBool(void) const
 {
-	std::ofstream	outfile((this->_target + "_shrubbery").c_str());
-	std::ifstream	tree_file("tree1.txt");
+	return (std::rand() % 2);
+}
 
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
+{
 	if (executor.getGrade() > this->_gradeExecute)
 		throw (AForm::GradeTooLowException());
-	if (outfile.is_open() && tree_file.is_open())
-		outfile << tree_file.rdbuf() << tree_file.rdbuf();
+	std::cout << "Crash!Bang!Doiiing!Crac!Bunk!Klon!Chtonk!Paf!" << std::endl;
+	if (generateRandBool() == true)
+		std::cout << this->_target << "'s robotomy was successful.";
 	else
-		std::cerr << "Could not open file." << std::endl;
-	outfile.close();
-	tree_file.close();
+		std::cout << "Robotomy failed.";
+	std::cout << std::endl;
 	return ;
 }
