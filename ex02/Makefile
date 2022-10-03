@@ -6,7 +6,7 @@
 
 ## Compilation
 
-NAME	=	form
+NAME	=	forms
 
 CC		=	c++
 
