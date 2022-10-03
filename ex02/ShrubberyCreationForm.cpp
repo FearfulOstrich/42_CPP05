@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 12:24:21 by aalleon           #+#    #+#             */
+/*   Updated: 2022/10/03 12:35:12 by aalleon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 
 /*==============================================================================
@@ -5,7 +17,7 @@
 ==============================================================================*/
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-	: Form("ShrubberyCreation", 145, 137)
+	: AForm("ShrubberyCreation", 145, 137)
 	, _target(target)
 {
 	std::cout << "ShrubberyCreationForm Default Constructor called." << std::endl;
@@ -13,7 +25,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
-	: Form(other)
+	: AForm(other)
 	, _target(other.getTarget())
 {
 	std::cout << "ShrubberyCreationForm Copy Constructor called." << std::endl;
@@ -47,7 +59,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 {
-	os << static_cast<const Form&>(obj);
+	os << static_cast<const AForm&>(obj);
 	return (os);
 }
 
@@ -55,7 +67,7 @@ std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 	Getters.
 ==============================================================================*/
 
-const std::string&	getTarget(void) const
+const std::string&	ShrubberyCreationForm::getTarget(void) const
 {
 	return (this->_target);
 }
@@ -68,21 +80,18 @@ const std::string&	getTarget(void) const
 	Member functions.
 ==============================================================================*/
 
-void	execute(const Bureaucrat& executor) const
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-	ofstream	outfile;
+	std::ofstream	outfile((this->_target + "_shrubbery").c_str());
+	std::ifstream	tree_file("tree1.txt");
 
 	if (executor.getGrade() > this->_gradeExecute)
-		throw (Form::GradeTooLowException());
-	if (this->_isSigned == false)
-		throw (Form::FormNotSignedException());
-	outfile.open(this->_target + "_shrubbery");
-	if (outfile.is_open())
-	{
-		outfile << "des arbres ASCII";
-		outfile.close();
-	}
+		throw (AForm::GradeTooLowException());
+	if (outfile.is_open() && tree_file.is_open())
+		outfile << tree_file.rdbuf();
 	else
 		std::cerr << "Could not open file." << std::endl;
+	outfile.close();
+	tree_file.close();
 	return ;
 }

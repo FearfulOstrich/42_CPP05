@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:35:20 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/01 11:56:54 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:37:48 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
-# include "Form.hpp"
 # include <cstdlib>
 # include <ctime>
+# include "AForm.hpp"
 
-class RobotomyRequestForm: public Form
+class RobotomyRequestForm: public AForm
 {
 private:
 	const std::string	_target;
@@ -39,8 +39,8 @@ public:
 	const std::string&	getTarget(void) const;
 
 	// Member functions
-	static bool	generateRandBool(void);
-	void		execute(const Bureaucrat& executor) const;
+	bool	generateRandBool(void) const;
+	void	execute(const Bureaucrat& executor) const;
 };
 
 std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& obj);

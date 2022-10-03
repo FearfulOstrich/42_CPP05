@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:11 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 21:30:57 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:15:36 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	Bureaucrat::demote(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(Form& form) const
+void	Bureaucrat::signForm(AForm& form) const
 {
 	if (form.getIsSigned() == true)
 	{
@@ -124,13 +124,35 @@ void	Bureaucrat::signForm(Form& form) const
 	}
 	try
 	{
-		form.beSigned(this);
+		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << ".";
 		std::cout << std::endl;
 	}
 	catch (std::exception& e)
 	{
 		std::cout << this->_name << " couldn't sign " << form.getName();
+		std::cout << " because " << e.what() << "." << std::endl;
+	}
+	return ;
+}
+
+void	Bureaucrat::executeForm(const AForm& form) const
+{
+	if (form.getIsSigned() == false)
+	{
+		std::cerr << form.getName() << " needs to be signed before execution.";
+		std::cerr << std::endl;
+		return ;
+	}
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName();
+		std::cout << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << this->getName() << " couldn't execute " << form.getName();
 		std::cout << " because " << e.what() << "." << std::endl;
 	}
 	return ;

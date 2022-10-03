@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:38:32 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/01 11:47:55 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:40:31 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 ==============================================================================*/
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-	: Form("RobotomyRequest", 72, 45)
+	: AForm("RobotomyRequest", 72, 45)
 	, _target(target)
 {
 	std::cout << "RobtomyRequestForm Default Constructor called." << std::endl;
-	std::srand(std::ctime(NULL));
+	std::srand(std::time(NULL));
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
-	: Form(other)
+	: AForm(other)
 	, _target(other.getTarget())
 {
 	std::cout << "RobotomyRequestForm Copy Constructor called." << std::endl;
 	*this = other;
-	std::srand(std::ctime(NULL));
+	std::srand(std::time(NULL));
 	return ;
 }
 
@@ -61,7 +61,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 std::ostream&	operator<<(std::ostream& os, const RobotomyRequestForm& obj)
 {
-	os << static_cast<const Form&>(obj);
+	os << static_cast<const AForm&>(obj);
 	return (os);
 }
 
@@ -82,19 +82,17 @@ const std::string&	RobotomyRequestForm::getTarget(void) const
 	Member functions.
 ==============================================================================*/
 
-static bool	RobotomyRequestForm::generateRandBool(void)
+bool	RobotomyRequestForm::generateRandBool(void) const
 {
 	return (std::rand() % 2);
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat& executor)
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (executor.getGrade() > this->_gradeExecute)
-		throw (Form::GradeTooLowException());
-	if (this->_isSigned == false)
-		throw (Form::FormNotSignedException());
+		throw (AForm::GradeTooLowException());
 	std::cout << "Crash!Bang!Doiiing!Crac!Bunk!Klon!Chtonk!Paf!" << std::endl;
-	if (RobotomyRequestForm::generateRandBool() == true)
+	if (generateRandBool() == true)
 		std::cout << this->_target << "'s robotomy was successful.";
 	else
 		std::cout << "Robotomy failed.";

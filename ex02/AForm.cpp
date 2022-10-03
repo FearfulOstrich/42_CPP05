@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 16:29:28 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/01 00:23:32 by antoine          ###   ########.fr       */
+/*   Created: 2022/10/03 10:57:00 by aalleon           #+#    #+#             */
+/*   Updated: 2022/10/03 12:22:34 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*==============================================================================
 	Constructors.
 ==============================================================================*/
 
-Form::Form(const std::string& name,\
+AForm::AForm(const std::string& name,\
 			unsigned int sign_grade, unsigned int exec_grade)
 	: _name(name)
 	, _isSigned(false)
@@ -31,7 +31,7 @@ Form::Form(const std::string& name,\
 	return ;
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: _name(other.getName())
 	, _gradeSign(other.getGradeSign())
 	, _gradeExecute(other.getGradeExecute())
@@ -45,7 +45,7 @@ Form::Form(const Form& other)
 	Destructor.
 ==============================================================================*/
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
 	std::cout << "Form Destructor called." << std::endl;
 	return ;
@@ -55,7 +55,7 @@ Form::~Form(void)
 	Operator overloads.
 ==============================================================================*/
 
-Form&	Form::operator=(const Form& other)
+AForm&	AForm::operator=(const AForm& other)
 {
 	std::cout << "Form assignment operator called." << std::endl;
 	if (this != &other)
@@ -63,7 +63,7 @@ Form&	Form::operator=(const Form& other)
 	return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& os, const Form& obj)
+std::ostream&	operator<<(std::ostream& os, const AForm& obj)
 {
 	os << "[Form " << obj.getName() << "]";
 	os << "Signed: " << obj.getIsSigned() << ";";
@@ -76,22 +76,22 @@ std::ostream&	operator<<(std::ostream& os, const Form& obj)
 	Getters.
 ==============================================================================*/
 
-const std::string&	Form::getName(void) const
+const std::string&	AForm::getName(void) const
 {
 	return (this->_name);
 }
 
-bool	Form::getIsSigned(void) const
+bool	AForm::getIsSigned(void) const
 {
 	return (this->_isSigned);
 }
 
-unsigned int	Form::getGradeSign(void) const
+unsigned int	AForm::getGradeSign(void) const
 {
 	return (this->_gradeSign);
 }
 
-unsigned int	Form::getGradeExecute(void) const
+unsigned int	AForm::getGradeExecute(void) const
 {
 	return (this->_gradeExecute);
 }
@@ -104,7 +104,7 @@ unsigned int	Form::getGradeExecute(void) const
 	Member functions.
 ==============================================================================*/
 
-void	Form::beSigned(const Bureaucrat& assignee)
+void	AForm::beSigned(const Bureaucrat& assignee)
 {
 	if (assignee.getGrade() > this->_gradeSign)
 		throw (GradeTooLowException());
@@ -116,19 +116,14 @@ void	Form::beSigned(const Bureaucrat& assignee)
 	Exceptions
 ==============================================================================*/
 
-const char*	Form::GradeTooHighException::what() const throw()
+const char*	AForm::GradeTooHighException::what() const throw()
 {
 	// std::cout << "In Form::GradeTooHighException what definition." << std::endl;
 	return ("Grade too high");
 }
 
-const char*	Form::GradeTooLowException::what() const throw()
+const char*	AForm::GradeTooLowException::what() const throw()
 {
 	// std::cout << "In Form::GradeTooLowException what definition." << std::endl;
 	return ("Grade too low");
-}
-
-const char*	Form::FormNotSignedException::what() const throw()
-{
-	return ("Form not signed");
 }

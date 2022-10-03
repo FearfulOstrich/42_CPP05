@@ -3,100 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:33:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 21:29:13 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:44:50 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main()
 {
-	{
-		try
-		{
-			Form	form;
-			std::cout << form << std::endl << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-		try
-		{
-			Form	form("form1", 150, 100);
-			std::cout << form << std::endl << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-		try
-		{
-			Form	form("formNull", 151, 150);
-			std::cout << form << std::endl << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-		try
-		{
-			Form	form("form400", 150, 0);
-			std::cout << form << std::endl << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-	}
-	std::cout << "=========================" << std::endl << std::endl;
-	{
-		try
-		{
-			Bureaucrat	bob("bob", 1);
-			Form		form;
-			
-			std::cout << bob << std::endl;
-			std::cout << form << std::endl;
-			bob.signForm(form);
-			std::cout << form << std::endl;
-			bob.signForm(form);
-			std::cout << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-		try
-		{
-			Bureaucrat	bob("bob", 12);
-			Form		form("topForm", 10, 10);
-			std::cout << bob << std::endl;
-			std::cout << form << std::endl;
-			bob.signForm(form);
-			std::cout << form << std::endl << std::endl;
-			std::cout << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-		try
-		{
-			Bureaucrat	bob("bob", 11);
-			Form		form("topForm", 10, 10);
-			bob.promote();
-			bob.signForm(form);
-			std::cout << form << std::endl << std::endl;
-		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl << std::endl;
-		}
-	}
+	Bureaucrat	bob("Bob", 100);
+	Bureaucrat	lenny("Lenny", 50);
+	Bureaucrat	jenny("Jenny", 5);
+	ShrubberyCreationForm	sForm("Townhall");
+	RobotomyRequestForm		rForm("R2D2");
+	PresidentialPardonForm	pForm("Zizou");
+
+	std::cout << bob << std::endl;
+	std::cout << lenny << std::endl;
+	std::cout << jenny << std::endl;
+	std::cout << sForm << std::endl;
+	std::cout << rForm << std::endl;
+	std::cout << pForm << std::endl;
+
+	bob.signForm(sForm);
+	std::cout << std::endl;
+	bob.executeForm(sForm);
+	std::cout << std::endl;
+	bob.signForm(rForm);
+	std::cout << std::endl;
+	lenny.signForm(rForm);
+	std::cout << std::endl;
+	lenny.executeForm(rForm);
+	std::cout << std::endl;
+	jenny.executeForm(rForm);
+	std::cout << std::endl;
+	jenny.executeForm(rForm);
+	std::cout << std::endl;
+	jenny.executeForm(rForm);
+	std::cout << std::endl;
+	jenny.executeForm(pForm);
+	std::cout << std::endl;
+	jenny.signForm(pForm);
+	std::cout << std::endl;
+	jenny.executeForm(pForm);
+	std::cout << std::endl;
 	return (0);
 }

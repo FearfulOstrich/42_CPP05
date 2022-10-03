@@ -16,7 +16,8 @@ FLAGS	=	-Wall -Wextra -Werror -std=c++98 -g3
 
 SRCDIR	=
 
-SRCFILE	=	main.cpp Bureaucrat.cpp Form.cpp
+SRCFILE	=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp\
+			PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 SRC		=	$(addprefix $(SRCDIR), $(SRCFILE))
 

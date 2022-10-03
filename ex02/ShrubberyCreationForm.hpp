@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:49:00 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/01 11:57:32 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:34:34 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include <fstream>
+# include "AForm.hpp"
 
-class ShrubberyCreationForm: public Form
+class ShrubberyCreationForm: public AForm
 {
 private:
 	const std::string	_target;
@@ -37,7 +38,7 @@ public:
 	const std::string&	getTarget(void) const;
 	
 	// Member functions
-	void	execute(const Bureaucrat& executor) c`onst;
+	void	execute(const Bureaucrat& executor) const;
 };
 
 std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj);

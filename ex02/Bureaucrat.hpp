@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 21:09:35 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 11:44:38 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include <stdexcept>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -45,7 +45,8 @@ public:
 	// Member functions
 	void	promote(void);
 	void	demote(void);
-	void	signForm(Form& form) const;
+	void	signForm(AForm& form) const;
+	void	executeForm(const AForm& form) const;
 
 	// Exceptions
 	class GradeTooHighException: public std::exception

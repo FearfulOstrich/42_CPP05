@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 22:10:32 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/01 11:57:19 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:34:25 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class PresidentialPardonForm: public Form
+class PresidentialPardonForm: public AForm
 {
 private:
 	const std::string	_target;
