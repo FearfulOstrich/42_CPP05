@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:29:25 by antoine           #+#    #+#             */
-/*   Updated: 2022/09/30 20:32:10 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:02:28 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat;
 class Form
 {
 private:
-	const std::string	_name;
+	const std::string&	_name;
 	bool				_isSigned;
 	const unsigned int	_gradeSign;
 	const unsigned int	_gradeExecute;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:11 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/30 14:33:55 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/11 10:57:15 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	Constructors.
 ==============================================================================*/
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
 	: _name(name)
 	, _grade(grade)
 {
@@ -53,10 +53,8 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 {
 	std::cout << "Bureaucrat assignment operator called." << std::endl;
-	std::cout << "copy from: " << other << std::endl;
 	if (this != &other)
 		this->_grade = other.getGrade();
-	std::cout << "copied: " << *this << std::endl;
 	return (*this);
 }
 
@@ -100,7 +98,6 @@ void	Bureaucrat::setGrade(unsigned int grade)
 
 void	Bureaucrat::promote(void)
 {
-	std::cout << "in promote" << std::endl;
 	if (this->_grade == 1)
 		throw (GradeTooHighException());
 	this->_grade--;
@@ -109,7 +106,6 @@ void	Bureaucrat::promote(void)
 
 void	Bureaucrat::demote(void)
 {
-	std::cout << "in demote" << std::endl;
 	if (_grade == 150)
 		throw (GradeTooLowException());
 	this->_grade++;
@@ -122,12 +118,10 @@ void	Bureaucrat::demote(void)
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	std::cout << "In GradeTooHighException what definition." << std::endl;
 	return ("Grade too high.");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	std::cout << "In GradeTooLowException what definition." << std::endl;
 	return ("Grade too low.");
 }

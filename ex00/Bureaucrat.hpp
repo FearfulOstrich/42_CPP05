@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/09/29 17:17:09 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/11 10:57:09 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _BUREAUCRAT_HPP_
-# define _BUREAUCRAT_HPP_
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <stdexcept>
@@ -25,7 +25,7 @@ protected:
 
 public:
 	// Constructors
-	Bureaucrat(const std::string name = "Unknown", unsigned int grade = 150);
+	Bureaucrat(const std::string& name = "Unknown", unsigned int grade = 150);
 	Bureaucrat(const Bureaucrat& other);
 
 	// Destructors
