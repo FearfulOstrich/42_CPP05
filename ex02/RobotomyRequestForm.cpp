@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:38:32 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/03 12:40:31 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:09:24 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 	, _target(target)
 {
 	std::cout << "RobtomyRequestForm Default Constructor called." << std::endl;
-	std::srand(std::time(NULL));
 	return ;
 }
 
@@ -31,7 +30,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 {
 	std::cout << "RobotomyRequestForm Copy Constructor called." << std::endl;
 	*this = other;
-	std::srand(std::time(NULL));
 	return ;
 }
 
@@ -54,7 +52,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	std::cout << "RobotomyRequestForm assignment operator called." << std::endl;
 	if (this != &other)
 	{
-		// Copy all attributes
+		this->_isSigned = other.getIsSigned();
 	}
 	return (*this);
 }
@@ -84,6 +82,7 @@ const std::string&	RobotomyRequestForm::getTarget(void) const
 
 bool	RobotomyRequestForm::generateRandBool(void) const
 {
+	std::srand(std::time(NULL));
 	return (std::rand() % 2);
 }
 

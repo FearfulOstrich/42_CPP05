@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 22:10:36 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/03 12:22:02 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:08:18 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 	std::cout << "PresidentialPardonForm assignment operator called." << std::endl;
 	if (this != &other)
 	{
-		// Copy all attributes
+		this->_isSigned = other.getIsSigned();
 	}
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:05 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 11:44:38 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:04:40 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class AForm;
 class Bureaucrat
 {
 private:
-	const std::string	_name;
+	const std::string&	_name;
 	unsigned int		_grade;
 protected:
 

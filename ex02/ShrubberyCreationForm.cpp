@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:24:21 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:33:32 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:45:09 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,18 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	std::cout << "ShrubberyCreationForm assignment operator called." << std::endl;
 	if (this != &other)
 	{
-		// Copy all attributes
+		this->_isSigned = other.getIsSigned();
 	}
 	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 {
-	os << static_cast<const AForm&>(obj);
+	os << "[Form " << obj.getName() << "]";
+	os << "Signed: " << obj.getIsSigned() << ";";
+	os << "SignGrade: " << obj.getGradeSign() << ";";
+	os << "ExecGrade: " << obj.getGradeExecute() << ";";
+	os << "Target: " << obj.getTarget() << ";";
 	return (os);
 }
 

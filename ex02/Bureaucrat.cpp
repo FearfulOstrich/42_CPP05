@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:27:11 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 12:15:36 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:05:49 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,8 @@ void	Bureaucrat::executeForm(const AForm& form) const
 {
 	if (form.getIsSigned() == false)
 	{
-		std::cerr << form.getName() << " needs to be signed before execution.";
-		std::cerr << std::endl;
+		std::cout << form.getName() << " needs to be signed before execution.";
+		std::cout << std::endl;
 		return ;
 	}
 	try
