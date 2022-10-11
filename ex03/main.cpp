@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:33:34 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:29:27 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:05:55 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,14 @@ int	main()
 
 	std::cout << stagios << std::endl;
 	std::cout << std::endl;
-	sForm = stagios.makeForm("wrong name", "You");
+	try
+	{
+		sForm = stagios.makeForm("wrong name", "You");
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "could not create form because " << e.what() << std::endl;
+	}
 	std::cout << std::endl;
 	sForm = stagios.makeForm("Shrubbery creation", "Townhall");
 	std::cout << std::endl;

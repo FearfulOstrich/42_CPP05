@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:58:06 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:28:24 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:04:13 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,16 @@ AForm*	Intern::makeForm(const std::string& form, const std::string& target)
 			return ((this->*(map[i].f))(target));
 		}
 	}
-	std::cout << form << " form not found." << std::endl;
+	throw FormNotFoundException();
 	return (NULL);
 }
+
+/*==============================================================================
+	Exceptions
+==============================================================================*/
+
+const char*	Intern::FormNotFoundException::what() const throw()
+{
+	return ("Form Not found.");
+}
+

@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 12:58:04 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/03 15:28:47 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:01:05 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ public:
 	// Accessors (getters should return by value or const-reference)
 	// Member functions
 	AForm*	makeForm(const std::string& form, const std::string& target);
+
+	// Exceptions
+	class FormNotFoundException: public std::exception
+	{
+	public:
+		const char*	what() const throw();
+	};
 };
 
 typedef struct s_form_map
