@@ -6,7 +6,7 @@
 /*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:38:32 by antoine           #+#    #+#             */
-/*   Updated: 2022/10/11 11:09:24 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:10:43 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 	: AForm("RobotomyRequest", 72, 45)
 	, _target(target)
 {
+	std::srand(std::time(NULL));
 	std::cout << "RobtomyRequestForm Default Constructor called." << std::endl;
 	return ;
 }
@@ -28,6 +29,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 	: AForm(other)
 	, _target(other.getTarget())
 {
+	std::srand(std::time(NULL));
 	std::cout << "RobotomyRequestForm Copy Constructor called." << std::endl;
 	*this = other;
 	return ;
@@ -82,7 +84,6 @@ const std::string&	RobotomyRequestForm::getTarget(void) const
 
 bool	RobotomyRequestForm::generateRandBool(void) const
 {
-	std::srand(std::time(NULL));
 	return (std::rand() % 2);
 }
 
